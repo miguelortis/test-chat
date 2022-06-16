@@ -56,7 +56,7 @@ const Chat = ({ name }) => {
       <div className="messages">
         {messages.map((el, i) => (
           <div style={{ textAlign: el.senderId === el.receiverId ? 'right' : 'left', margin: '8px 2px' }} key={i}>
-            <span className={el.senderId === el.receiverId ? 'right' : 'left'}>{el.name + ':' + el.message}</span>
+            <span className={el.senderId === el.receiverId ? 'right' : 'left'}>{el.name.toUpperCase() + ':' + ' ' + el.message}</span>
           </div>
         ))}
         <div ref={divRef}></div>

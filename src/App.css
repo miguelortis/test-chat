@@ -101,6 +101,12 @@
 
 .users li div {
   color: #020202;
+  text-transform: uppercase;
+}
+
+.users ul {
+  padding: 0 21px;
+  margin: 5px 0 0 0;
 }
 
 .header {

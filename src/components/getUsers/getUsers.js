@@ -12,7 +12,7 @@ export function GetUsers() {
 
         <div className="users">
             <h4>Usuarios conectados</h4>
-            <span style={{ margin: '-10px auto' }}>({users.map(el => { if (el.socketId === socket.id) return el.name })})</span>
+            <span style={{ margin: '-10px auto', textTransform: 'uppercase' }}>({users.map(el => { if (el.socketId === socket.id) return el.name })})</span>
             <hr style={{ width: '100%' }} />
             <ul>
 
