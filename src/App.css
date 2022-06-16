@@ -231,3 +231,16 @@
   top: -1rem;
   width: 95%;
 }
+
+@media screen and (max-width: 600px) {
+  .App {
+    text-align: center;
+    width: 100%;
+    max-width: 1500px;
+    margin: 20px auto;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+  }
+}
