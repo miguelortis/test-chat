@@ -62,14 +62,14 @@ const Chat = ({ name }) => {
         <div ref={divRef}></div>
       </div>
       <form action="#" onSubmit={submit} className='submit'>
-        <label htmlFor="">Introduce texto del mensaje...</label>
         <textarea
           autoFocus
+          placeholder="Introduce texto del mensaje..."
           ref={textarea}
           name=""
           id=""
           cols="30"
-          rows="10"
+          rows="3"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         ></textarea>
