@@ -10,6 +10,7 @@
 }
 
 .register {
+
   grid-column: 1 / 4;
   min-height: 60vh;
 }
@@ -134,10 +135,13 @@
 .messages {
   display: block;
   background-color: rgb(255, 255, 255);
-  border: #005194 solid 2px;
+  border: #49a8f5 solid 2px;
+  border-bottom-color: #fff;
   width: 100%;
   border-radius: 10px;
-  min-height: 30vh;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  min-height: 50vh;
   max-height: 30vh;
   overflow-y: scroll;
 
@@ -163,6 +167,8 @@
   border: #49a8f5 solid 2px;
   width: 100%;
   border-radius: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
