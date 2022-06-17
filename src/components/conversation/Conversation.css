@@ -1,0 +1,59 @@
+.inputSubmit:focus {
+    border-color: rgba(163, 212, 252, 0.966);
+    box-shadow: 0 1px 1px rgba(23, 88, 229, 0.075)inset, 0 0 8px rgba(82, 177, 240, 0.61);
+    outline: 0 none;
+}
+
+.inputSubmit {
+    margin: 10px;
+    padding-left: 15px;
+    font-family: cursive;
+    font-size: 18px;
+    width: 80%;
+    height: 35px;
+    border-radius: 50px;
+    border: 0.5px solid rgba(145, 141, 141, 0.89);
+    padding: 2;
+    background-color: rgb(238, 232, 232);
+    word-break: break-word
+}
+
+.message-right {
+    width: 100%;
+    text-align: -webkit-right;
+}
+
+.message-left {
+    width: 100%;
+    text-align: -webkit-left;
+}
+
+.right,
+.left {
+    width: max-content;
+    max-width: 70%;
+    margin: 10px;
+    padding-right: 10px;
+    background-color: rgb(127, 245, 253);
+    overflow-wrap: break-word;
+}
+
+.right {
+    width: max-content;
+    background: rgba(150, 226, 222, 0.925);
+    right: 10px;
+    text-align: right;
+    -webkit-border-radius: 20px 0px 20px 20px;
+    -moz-border-radius: 20px 0px 20px 20px;
+    border-radius: 20px 0px 20px 20px;
+}
+
+.left {
+    width: max-content;
+    background: rgba(229, 233, 233, 0.925);
+    right: 10px;
+    text-align: right;
+    -webkit-border-radius: 0px 20px 20px 20px;
+    -moz-border-radius: 0px 20px 20px 20px;
+    border-radius: 0px 20px 20px 20px;
+}
