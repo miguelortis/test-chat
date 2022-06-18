@@ -43,11 +43,11 @@ export default function BottomAppBar() {
         <div>
 
             <Paper square >
-                <Typography variant="h5" gutterBottom component="div" sx={{ p: 2, pb: 0 }}>
+                <Typography variant="h5" gutterBottom component="div" sx={{ p: 2, pb: 1 }}>
                     Bandeja de Entrada
                 </Typography>
                 <Divider />
-                <List sx={{ maxHeight: '300px', overflowY: 'scroll', minHeight: 'calc(100vh - 320px)', backgroundImage: `url(${BgChat})`, backgroundRepeat: 'repeat' }}>
+                <List sx={{ maxHeight: '300px', overflowY: 'scroll', minHeight: { xs: 'calc(100vh - 240px)', md: 'calc(100vh - 320px)' }, backgroundImage: `url(${BgChat})`, backgroundRepeat: 'repeat' }}>
                     {messages.map(({ name, message, messageDate, senderId, receiverId }, i) => (
                         <React.Fragment key={i}>
 

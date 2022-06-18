@@ -106,6 +106,7 @@
   align-items: center;
   justify-content: center;
   min-height: calc(100vh - 130px);
+  margin: 0 10px;
 }
 
 .messages {
@@ -217,6 +218,13 @@
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(3, auto);
+  }
+
+}
+
+@media screen and (max-width: 899px) {
+  .footer {
+    display: none;
   }
 
 }

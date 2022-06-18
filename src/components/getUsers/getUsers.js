@@ -7,75 +7,55 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Checkbox from '@mui/material/Checkbox';
 import Avatar from '@mui/material/Avatar';
 import socket from "../socket/Socket";
+import { Divider, Typography } from "@mui/material";
 export function GetUsers() {
 
     const [users, setUsers] = useState([]);
-    const [checked, setChecked] = React.useState([1]);
 
-    const handleToggle = (value) => () => {
-        const currentIndex = checked.indexOf(value);
-        const newChecked = [...checked];
-
-        if (currentIndex === -1) {
-            newChecked.push(value);
-        } else {
-            newChecked.splice(currentIndex, 1);
-        }
-
-        setChecked(newChecked);
-    };
-    //////////////////////////////////////////////
     useEffect(() => {
         socket.on("getUsers", (users) => {
             setUsers(users);
-            console.log(users)
         });
     }, [users]);
+    const online = {
+        height: '10px',
+        width: '10px',
+        backgroundColor: 'rgba(25, 255, 4, 0.89)',
+        borderRadius: '50px',
+        border: '1px solid rgba(5, 155, 30, 0.89)',
+    }
     return (
 
         <div >
             <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', minHeight: 'calc(100vh - 202px)' }}>
-                {users.map((user, i) => {
-                    if (user.socketId === socket.id) return
-                    const labelId = `checkbox-list-secondary-label-${i}`;
-                    return (
-                        <ListItem
-                            key={i}
-                            secondaryAction={
-                                <Checkbox
-                                    edge="end"
-                                    onChange={handleToggle(i)}
-                                    checked={checked.indexOf(i) !== -1}
-                                    inputProps={{ 'aria-labelledby': labelId }}
-                                />
-                            }
-                            disablePadding
-                        >
-                            <ListItemButton>
-                                <ListItemAvatar>
-                                    <Avatar
-                                        alt={user.name}
-                                    />
-                                </ListItemAvatar>
-                                <ListItemText id={labelId} primary={user.name} />
-                            </ListItemButton>
-                        </ListItem>
-                    );
-                })}
+                <Typography variant="h5" gutterBottom component="div" sx={{ p: 2, pb: 0 }}>
+                    Usuarios Conectados
+                </Typography>
+                <Divider />
+                {users.length <= 1
+                    ? <ListItem sx={{ textAlign: 'center' }}><ListItemText primary='No se ha conectado ningun usuario' /></ListItem>
+                    : users.map((user, i) => {
+                        if (user.socketId === socket.id) return
+                        return (
+                            <ListItem
+                                key={i}
+                                secondaryAction={
+                                    <div style={online} />
+                                }
+                                disablePadding
+                            >
+                                <ListItemButton>
+                                    <ListItemAvatar>
+                                        <Avatar
+                                            alt={user.name}
+                                        />
+                                    </ListItemAvatar>
+                                    <ListItemText primary={user.name} />
+                                </ListItemButton>
+                            </ListItem>
+                        );
+                    })}
             </List>
-            {/*             
-            <h4>Usuarios conectados</h4>
-            <span style={{ margin: '-10px auto', textTransform: 'uppercase' }}>({users.map(el => { return (el.socketId === socket.id && el.name) })})</span>
-            <hr style={{ width: '100%' }} />
-            <ul>
-
-                {users.map((el, i) => (
-                    el.socketId !== socket.id &&
-                    <li key={i}>
-                        <div>{el.name}</div>
-                    </li>
-                ))}
-            </ul> */}
         </div>
     );
 }
