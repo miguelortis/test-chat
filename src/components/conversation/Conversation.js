@@ -12,7 +12,6 @@ import socket from "../../components/socket/Socket";
 import SendIcon from '@mui/icons-material/Send';
 import BgChat from '../../assets/images/bg_chat.png';
 import './Conversation.css';
-import moment from 'moment';
 export default function BottomAppBar() {
     const [message, setMessage] = useState("");
     const [messages, setMessages] = useState([]);
