@@ -54,7 +54,7 @@ export default function Header() {
 								aria-label="account of current user"
 								aria-controls="menu-appbar"
 								aria-haspopup="true"
-								onClick={handleMenu}
+								// onClick={handleMenu}
 								color="inherit"
 							>
 								<AccountCircle sx={{ fontSize: 40 }} />
@@ -84,7 +84,9 @@ export default function Header() {
 								</Typography>
 								<Typography sx={{ display: { md: 'none' } }} variant="caption" component="span">
 									{users.length > 2
-										? `${users[0].name}, ${users[1].name}...`
+										? users.map((user) => {
+											if (user.socketId !== socket.id) return user.name
+										})
 										: users.map((user) => {
 											if (user.socketId !== socket.id) return user.name
 										})}
