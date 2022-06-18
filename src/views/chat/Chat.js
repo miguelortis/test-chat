@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import socket from "../../components/socket/Socket";
 import Conversation from '../../components/conversation/Conversation';
-import { GetUsers } from "../../components/getUsers/GetUsers";
+import { GetUsers } from "../../components/getUsers/getUsers";
 import { Grid } from "@mui/material";
 const Chat = () => {
+
   const name = localStorage.getItem("name");
   useEffect(() => {
     socket.emit("connected", name);
