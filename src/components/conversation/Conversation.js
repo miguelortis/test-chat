@@ -19,7 +19,7 @@ export default function BottomAppBar() {
     useEffect(() => {
         socket.on("messages", (message) => {
             setMessages([...messages, { ...message, receiverId: socket.id }]);
-            console.log(socket.id, messages)
+
         });
 
 
