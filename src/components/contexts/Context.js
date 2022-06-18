@@ -3,15 +3,18 @@ import React, { useReducer, useEffect, createContext } from 'react'
 import PropTypes from 'prop-types'
 
 const initialState = {
-  currentUser: null,
+  users: [],
+  buttonInfo: false,
 }
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'SET_USER_DATA':
-      return { ...state, currentUser: { ...state.currentUser, ...action.payload } }
+    case 'SET_USERS':
+      return { ...state, users: action.payload }
+    case 'SET_BUTTON_INFO':
+      return { ...state, buttonInfo: action.payload }
     case 'RESET':
-      return { ...state, currentUser: null, dataTotal: [] }
+      return { ...state, buttonInfo: false }
     default:
       return state
   }

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
+import { Context } from '../contexts/Context'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -9,9 +10,15 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { useNavigate } from 'react-router-dom'
+import socket from "../../components/socket/Socket";
 
 export default function Header() {
+	const {
+		state: { users },
+		dispatch,
+	} = useContext(Context)
 	const navigate = useNavigate();
+
 	const [auth, setAuth] = useState(null);
 	const [anchorEl, setAnchorEl] = useState(null);
 
@@ -33,6 +40,9 @@ export default function Header() {
 		localStorage.removeItem("name");
 		navigate("/");
 	}
+	const openInfo = () => {
+		dispatch({ type: "SET_BUTTON_INFO", payload: true })
+	}
 	return (
 		<Box sx={{ flexGrow: 1, gridColumn: '1/4' }}>
 			<AppBar position="static">
@@ -47,7 +57,7 @@ export default function Header() {
 								onClick={handleMenu}
 								color="inherit"
 							>
-								<AccountCircle />
+								<AccountCircle sx={{ fontSize: 40 }} />
 							</IconButton>
 							<Menu
 								id="menu-appbar"
@@ -67,13 +77,24 @@ export default function Header() {
 								<MenuItem onClick={handleClose}>Profile</MenuItem>
 								<MenuItem onClick={handleClose}>My account</MenuItem>
 							</Menu>
+							<div>
+								<button className='buttonInfo' onClick={openInfo}></button>
+								<Typography sx={{ mt: '10px', lineHeight: 1 }} variant="h6" component="div">
+									{auth.toLowerCase().replace(/\b\w/g, (l) => l.toUpperCase())}
+								</Typography>
+								<Typography sx={{ display: { md: 'none' } }} variant="caption" component="span">
+									{users.length > 2
+										? `${users[0].name}, ${users[1].name}...`
+										: users.map((user) => {
+											if (user.socketId !== socket.id) return user.name
+										})}
 
-							<Typography variant="h6" component="div">
-								{auth.toLowerCase().replace(/\b\w/g, (l) => l.toUpperCase())}
-							</Typography>
+								</Typography>
+
+							</div>
 						</div>
 					)}
-					<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+					<Typography variant="h6" component="div" sx={{ flexGrow: 1, display: { xs: 'none', md: 'block' } }}>
 						ChatApp
 					</Typography>
 					{auth && <IconButton
@@ -82,6 +103,10 @@ export default function Header() {
 						color="inherit"
 						aria-label="menu"
 						onClick={handleLogout}
+						sx={{
+							position: { xs: 'absolute' },
+							right: { xs: '20px' },
+						}}
 					>
 						<LogoutIcon />
 					</IconButton>}

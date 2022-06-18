@@ -1,4 +1,4 @@
-import { useContext, useRef } from "react";
+import { useRef } from "react";
 import { Context } from '../../components/contexts/Context'
 import { useNavigate, Navigate } from 'react-router-dom'
 import "./login.css";
@@ -6,10 +6,7 @@ import "./login.css";
 
 export default function Login() {
     const navigate = useNavigate();
-    const {
-        state: { currentUser },
-        dispatch,
-    } = useContext(Context)
+
     const name = useRef();
     if (localStorage.getItem("name")) {
         return <Navigate to="/chat" replace={true} />

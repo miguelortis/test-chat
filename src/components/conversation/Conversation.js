@@ -29,14 +29,13 @@ export default function BottomAppBar() {
     const input = useRef(null);
     useEffect(() => {
         divRef.current.scrollIntoView({ behavior: "smooth" });
-        input.current.focus();
     });
 
     const submit = (e) => {
         e.preventDefault();
-
         socket.emit("message", name, message);
         setMessage("");
+        input.current.focus();
     };
     const ListStyle = {
         backgroundColor: 'rgba(245, 236, 236)',

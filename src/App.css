@@ -152,6 +152,10 @@
   justify-content: center;
 }
 
+.buttonInfo {
+  display: none;
+}
+
 .submit {
   width: 100%;
   display: flex;
@@ -227,7 +231,56 @@
     display: none;
   }
 
+
+  .buttonInfo:hover {
+    background-color: #ffffff49;
+    box-shadow: 2px 6px 8px rgba(70, 70, 70, 0.596);
+
+    transition: all 0.2s ease;
+  }
+
+
+  .buttonInfo {
+    background-color: #ffffff00;
+    box-shadow: 2px 6px 8px rgba(70, 70, 70, 0);
+    width: 0;
+    display: flex;
+    position: absolute;
+    background: transparent;
+    height: 100%;
+    top: 0;
+    width: calc(80vw - 110px);
+    border: 0;
+    cursor: pointer;
+
+  }
+
+  @keyframes buttonInfo {
+    0% {
+      background-color: #ffffff00;
+      box-shadow: 2px 6px 8px rgba(70, 70, 70, 0);
+      width: 0;
+    }
+
+    50% {
+      background-color: #ffffff8a;
+      box-shadow: 2px 6px 8px rgba(70, 70, 70, 0.719);
+    }
+
+    100% {
+      background-color: #ffffff1e;
+      box-shadow: 2px 6px 8px rgba(70, 70, 70, 0.719);
+      width: calc(80vw - 110px);
+    }
+
+  }
 }
+
+.getUsers {
+  display: block;
+  position: absolute;
+}
+
 
 @media screen and (min-width: 1000px) {
   .chat {
