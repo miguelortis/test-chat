@@ -86,7 +86,7 @@ export default function Header() {
 									{users.length > 2
 										? users.map((user) => {
 											if (user.socketId !== socket.id) return user.name
-										})
+										}).join(', ')
 										: users.map((user) => {
 											if (user.socketId !== socket.id) return user.name
 										})}
