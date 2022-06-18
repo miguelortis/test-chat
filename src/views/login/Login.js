@@ -1,6 +1,6 @@
 import { useContext, useRef } from "react";
 import { Context } from '../../components/contexts/Context'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Navigate } from 'react-router-dom'
 import "./login.css";
 // import { CircularProgress } from "@material-ui/core";
 
@@ -10,8 +10,11 @@ export default function Login() {
         state: { currentUser },
         dispatch,
     } = useContext(Context)
-
     const name = useRef();
+    if (localStorage.getItem("name")) {
+        return <Navigate to="/chat" replace={true} />
+    }
+
 
     const handleClick = (e) => {
         e.preventDefault();
