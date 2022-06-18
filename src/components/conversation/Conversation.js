@@ -10,7 +10,7 @@ import Avatar from '@mui/material/Avatar';
 import { Divider, IconButton, TextField } from '@mui/material';
 import socket from "../../components/socket/Socket";
 import SendIcon from '@mui/icons-material/Send';
-import BgChat from '../../assets/images/bg_chat.jpg';
+import BgChat from '../../assets/images/bg_chat.png';
 import './Conversation.css';
 
 export default function BottomAppBar() {
@@ -38,27 +38,51 @@ export default function BottomAppBar() {
         socket.emit("message", name, message);
         setMessage("");
     };
-
+    const ListStyle = {
+        backgroundColor: 'rgba(245, 236, 236)',
+        maxHeight: '300px',
+        overflowY: 'scroll',
+        minHeight: {
+            xs: 'calc(100vh - 200px)',
+            md: 'calc(100vh - 320px)'
+        },
+        backgroundImage: `url(${BgChat})`,
+        backgroundRepeat: 'repeat',
+    }
     return (
         <div>
 
             <Paper square >
-                <Typography variant="h5" gutterBottom component="div" sx={{ p: 2, pb: 1 }}>
+                <Typography variant="h5" gutterBottom component="div" sx={{ p: 2, pb: 1, display: { xs: 'none', md: 'block' } }}>
                     Bandeja de Entrada
                 </Typography>
                 <Divider />
-                <List sx={{ maxHeight: '300px', overflowY: 'scroll', minHeight: { xs: 'calc(100vh - 240px)', md: 'calc(100vh - 320px)' }, backgroundImage: `url(${BgChat})`, backgroundRepeat: 'repeat' }}>
+                <List sx={ListStyle}>
                     {messages.map(({ name, message, messageDate, senderId, receiverId }, i) => (
                         <React.Fragment key={i}>
 
                             <div className={senderId === receiverId ? 'message-right' : 'message-left'}>
                                 <div className={senderId === receiverId ? 'right' : 'left'} >
-                                    <ListItem >
-                                        <ListItemText primary={senderId === receiverId ? '' : name} secondary={message} />
-                                        <Typography variant="caption" display="block" gutterBottom>
-                                            {messageDate}
-                                        </Typography>
+                                    <ListItem sx={{ pt: 0 }}>
+                                        <ListItemText primary={
+                                            <React.Fragment>
+                                                <Typography
+                                                    sx={{ display: 'inline' }}
+                                                    component="span"
+                                                    variant="caption"
+                                                    color="text.primary"
+                                                >
+                                                    {senderId === receiverId ? '' : name + ': '}
+                                                </Typography>
+                                            </React.Fragment>} secondary={message} />
                                     </ListItem>
+                                    <Typography sx={{
+                                        display: 'inline-block',
+                                        verticalAlign: 'top',
+                                        fontSize: '0.6875rem'
+                                    }} variant="caption" display="block" gutterBottom>
+                                        02:00 pm
+                                    </Typography>
                                 </div>
                             </div>
                         </React.Fragment>

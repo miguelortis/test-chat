@@ -12,7 +12,7 @@ const Chat = () => {
 
   return (
     <div className="chat">
-      <Grid sx={{ mt: 2 }} container spacing={2}>
+      <Grid container spacing={2}>
         <Grid item sx={{ display: { xs: 'none', md: 'block' } }} xs={12} md={4} lg={4} xl={4}>
           <GetUsers />
         </Grid>

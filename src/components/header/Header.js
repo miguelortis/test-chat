@@ -76,7 +76,7 @@ export default function Header() {
 					<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
 						ChatApp
 					</Typography>
-					<IconButton
+					{auth && <IconButton
 						size="large"
 						edge="start"
 						color="inherit"
@@ -84,7 +84,7 @@ export default function Header() {
 						onClick={handleLogout}
 					>
 						<LogoutIcon />
-					</IconButton>
+					</IconButton>}
 				</Toolbar>
 			</AppBar>
 		</Box>

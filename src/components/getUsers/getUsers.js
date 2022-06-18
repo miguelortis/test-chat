@@ -27,7 +27,7 @@ export function GetUsers() {
     return (
 
         <div >
-            <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', minHeight: 'calc(100vh - 202px)' }}>
+            <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', minHeight: 'calc(100vh - 195px)' }}>
                 <Typography variant="h5" gutterBottom component="div" sx={{ p: 2, pb: 0 }}>
                     Usuarios Conectados
                 </Typography>

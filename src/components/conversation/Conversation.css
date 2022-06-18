@@ -7,14 +7,14 @@
 .inputSubmit {
     margin: 10px;
     padding-left: 15px;
-    font-family: cursive;
+    font-family: Segoe UI, Helvetica Neue, Helvetica, Lucida Grande, Arial, Ubuntu, Cantarell, Fira Sans, sans-serif;
     font-size: 18px;
     width: 80%;
     height: 35px;
     border-radius: 50px;
     border: 0.5px solid rgba(145, 141, 141, 0.89);
     padding: 2;
-    background-color: rgb(238, 232, 232);
+    background-color: rgb(247, 241, 241);
     word-break: break-word
 }
 
@@ -31,6 +31,7 @@
 .right,
 .left {
     width: max-content;
+    min-width: 100px;
     max-width: 70%;
     margin: 10px;
     padding-right: 10px;
@@ -40,22 +41,22 @@
 
 .right {
     width: max-content;
-    background: rgba(150, 226, 222, 0.925);
+    background: rgba(182, 241, 252, 0.753);
     right: 10px;
     text-align: right;
-    -webkit-border-radius: 20px 0px 20px 20px;
-    -moz-border-radius: 20px 0px 20px 20px;
-    border-radius: 20px 0px 20px 20px;
+    -webkit-border-radius: 10px 0px 10px 10px;
+    -moz-border-radius: 10px 0px 10px 10px;
+    border-radius: 10px 0px 10px 10px;
 }
 
 .left {
     width: max-content;
-    background: rgba(229, 233, 233, 0.925);
+    background: rgba(255, 255, 255, 0.925);
     right: 10px;
     text-align: right;
-    -webkit-border-radius: 0px 20px 20px 20px;
-    -moz-border-radius: 0px 20px 20px 20px;
-    border-radius: 0px 20px 20px 20px;
+    -webkit-border-radius: 0px 10px 10px 10px;
+    -moz-border-radius: 0px 10px 10px 10px;
+    border-radius: 0px 10px 10px 10px;
 }
 
 @media screen and (max-width: 899px) {
