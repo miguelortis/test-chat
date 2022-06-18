@@ -12,7 +12,7 @@ import socket from "../../components/socket/Socket";
 import SendIcon from '@mui/icons-material/Send';
 import BgChat from '../../assets/images/bg_chat.png';
 import './Conversation.css';
-
+import moment from 'moment';
 export default function BottomAppBar() {
     const [message, setMessage] = useState("");
     const [messages, setMessages] = useState([]);
@@ -31,8 +31,8 @@ export default function BottomAppBar() {
         divRef.current.scrollIntoView({ behavior: "smooth" });
     });
 
-    const submit = (e) => {
-        e.preventDefault();
+    const submit = () => {
+        console.log(messages);
         socket.emit("message", name, message);
         setMessage("");
         input.current.focus();
@@ -80,7 +80,7 @@ export default function BottomAppBar() {
                                         verticalAlign: 'top',
                                         fontSize: '0.6875rem'
                                     }} variant="caption" display="block" gutterBottom>
-                                        02:00 pm
+                                        {messageDate}
                                     </Typography>
                                 </div>
                             </div>

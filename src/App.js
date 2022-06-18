@@ -9,15 +9,6 @@ import PrivateRoute from "./components/privateRoute/PrivateRoute";
 import Page404 from "./views/page404/Page404";
 
 function App() {
-  const [name, setName] = useState("");
-  const [register, setRegister] = useState(false);
-
-  const handleRegister = (e) => {
-    e.preventDefault();
-    if (name !== "") {
-      setRegister(true);
-    }
-  };
 
   return (
     <div className="App">

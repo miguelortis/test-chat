@@ -20,7 +20,6 @@ export function GetUsers() {
         socket.on("getUsers", (users) => {
             setUsers(users);
             dispatch({ type: "SET_USERS", payload: users });
-            console.log(users);
         });
     }, [users]);
     const online = {
