@@ -46,7 +46,7 @@ export default function Header() {
 						<div style={{ display: 'contents' }}>
 							<ListItemAvatar>
 								<Avatar>
-									{userData.charAt(0).toUpperCase()}
+									{userData?.charAt(0)?.toUpperCase()}
 								</Avatar>
 							</ListItemAvatar>
 							{/* <IconButton
