@@ -1,8 +1,6 @@
 import { useRef } from "react";
-import { Context } from '../../components/contexts/Context'
 import { useNavigate, Navigate } from 'react-router-dom'
 import "./login.css";
-// import { CircularProgress } from "@material-ui/core";
 
 export default function Login() {
     const navigate = useNavigate();
@@ -17,10 +15,6 @@ export default function Login() {
         e.preventDefault();
         localStorage.setItem('name', name.current.value.toLowerCase().replace(/\b\w/g, (l) => l.toUpperCase()))
         navigate("/chat");
-        // loginCall(
-        //     { email: email.current.value, password: password.current.value },
-        //     dispatch
-        // );
     };
 
     return (

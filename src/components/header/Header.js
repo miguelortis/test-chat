@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Context } from '../contexts/Context'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -21,11 +21,11 @@ export default function Header() {
 
 	const [auth, setAuth] = useState(null);
 	const [anchorEl, setAnchorEl] = useState(null);
-
+	const userData = localStorage.getItem("name")
 	useEffect(() => {
-		setAuth(localStorage.getItem("name"));
+		setAuth(userData);
 	}
-		, [localStorage.getItem("name")]);
+		, [userData]);
 
 
 

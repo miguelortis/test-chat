@@ -7,7 +7,6 @@ import { Grid } from "@mui/material";
 const Chat = () => {
   const {
     state: { buttonInfo },
-    dispatch,
   } = useContext(Context)
 
   const name = localStorage.getItem("name");
