@@ -99,7 +99,7 @@ export function GetUsers() {
 												anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
 												variant="dot"
 											>
-												<Avatar alt="user.name" src="/static/images/avatar/1.jpg" >{user.name.charAt(0).toUpperCase()}</Avatar>
+												<Avatar alt={user.name}>{user.name.charAt(0).toUpperCase()}</Avatar>
 											</StyledBadge>
 										</ListItemAvatar>
 										<ListItemText primary={user.name} />
