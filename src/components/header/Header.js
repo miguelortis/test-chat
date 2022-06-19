@@ -11,6 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { useNavigate } from 'react-router-dom'
 import socket from "../../components/socket/Socket";
+import { Avatar, ListItemAvatar } from '@mui/material';
 
 export default function Header() {
 	const {
@@ -28,11 +29,6 @@ export default function Header() {
 		, [userData]);
 
 
-
-	const handleMenu = (event) => {
-		setAnchorEl(event.currentTarget);
-	};
-
 	const handleClose = () => {
 		setAnchorEl(null);
 	};
@@ -49,7 +45,12 @@ export default function Header() {
 				<Toolbar>
 					{auth && (
 						<div style={{ display: 'contents' }}>
-							<IconButton
+							<ListItemAvatar>
+								<Avatar>
+									{userData.charAt(0).toUpperCase()}
+								</Avatar>
+							</ListItemAvatar>
+							{/* <IconButton
 								size="large"
 								aria-label="account of current user"
 								aria-controls="menu-appbar"
@@ -58,7 +59,7 @@ export default function Header() {
 								color="inherit"
 							>
 								<AccountCircle sx={{ fontSize: 40 }} />
-							</IconButton>
+							</IconButton> */}
 							<Menu
 								id="menu-appbar"
 								anchorEl={anchorEl}
@@ -84,11 +85,13 @@ export default function Header() {
 								</Typography>
 								<Typography sx={{ display: { md: 'none' } }} variant="caption" component="span">
 									{users.length > 2
-										? users.map((user) => {
-											if (user.socketId !== socket.id) return user.name
-										}).join(', ')
+										? users.slice(-2, -1).map((user) => {
+											if (user.socketId !== socket.id) { return user.name }
+											return null
+										})
 										: users.map((user) => {
-											if (user.socketId !== socket.id) return user.name
+											if (user.socketId !== socket.id) { return user.name }
+											return null
 										})}
 
 								</Typography>
