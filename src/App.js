@@ -6,7 +6,6 @@ import Footer from "./components/footer/Footer";
 import Login from "./views/login/Login";
 import { ContextProvider } from './components/contexts/Context'
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
-import Page404 from "./views/page404/Page404";
 
 function App() {
 
@@ -20,7 +19,6 @@ function App() {
             path="/chat"
             element={<PrivateRoute />}
           />
-          {/* <Route exact path="*" name="Page 404" render={(props) => <Page404 {...props} />} /> */}
         </Routes>
         <Footer />
       </ContextProvider>
