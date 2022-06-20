@@ -56,7 +56,6 @@ export function GetUsers() {
 		dispatch({ type: "SET_BUTTON_INFO", payload: false })
 	}
 
-
 	return (
 		<div >
 			<List dense sx={{
@@ -99,7 +98,7 @@ export function GetUsers() {
 												anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
 												variant="dot"
 											>
-												<Avatar alt={user.name}>{user.name.charAt(0).toUpperCase()}</Avatar>
+												<Avatar src={`data:image/png;base64,${user.photoURL}`} alt={user.name}>{user.name.charAt(0).toUpperCase()}</Avatar>
 											</StyledBadge>
 										</ListItemAvatar>
 										<ListItemText primary={user.name} />

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 const initialState = {
   users: [],
   buttonInfo: false,
+  photoURL: '',
 }
 
 const reducer = (state, action) => {
@@ -13,8 +14,10 @@ const reducer = (state, action) => {
       return { ...state, users: action.payload }
     case 'SET_BUTTON_INFO':
       return { ...state, buttonInfo: action.payload }
+    case 'SET_PROFILE_PICTURE':
+      return { ...state, photoURL: action.payload }
     case 'RESET':
-      return { ...state, buttonInfo: false }
+      return { ...state, users: [], buttonInfo: false, photoURL: '' }
     default:
       return state
   }

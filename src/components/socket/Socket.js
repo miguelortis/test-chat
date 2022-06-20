@@ -1,5 +1,5 @@
 import io from "socket.io-client";
 
-let socket = io("https://servidor-chattest.herokuapp.com/");
+let socket = io("http://localhost:5500/");
 
 export default socket;

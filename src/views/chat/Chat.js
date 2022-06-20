@@ -11,7 +11,7 @@ const Chat = () => {
 
   const name = localStorage.getItem("name");
   useEffect(() => {
-    socket.emit("connected", name);
+    socket.emit("connected", { name, photoURL: localStorage.getItem('Profile-Picture') });
   }, [name]);
 
   return (
