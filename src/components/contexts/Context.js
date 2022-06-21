@@ -6,6 +6,15 @@ const initialState = {
   users: [],
   buttonInfo: false,
   photoURL: '',
+  showModal: { isOpen: false, title: '', content: '' },
+  alert: {
+    isAlert: false,
+    severity: 'info',
+    message: '',
+    timeout: null,
+    location: '',
+  },
+  loading: false,
 }
 
 const reducer = (state, action) => {
@@ -16,6 +25,12 @@ const reducer = (state, action) => {
       return { ...state, buttonInfo: action.payload }
     case 'SET_PROFILE_PICTURE':
       return { ...state, photoURL: action.payload }
+    case 'SET_MODAL':
+      return { ...state, showModal: action.payload }
+    case 'SET_ALERT':
+      return { ...state, alert: action.payload }
+    case 'SET_LOADING':
+      return { ...state, loading: action.payload }
     case 'RESET':
       return { ...state, users: [], buttonInfo: false, photoURL: '' }
     default:
@@ -30,9 +45,7 @@ const ContextProvider = ({ children }) => {
   }
   const [state, dispatch] = useReducer(reducer, initialState)
   const { currentUser } = state
-  /* const logout = () => {
-    history.push('/')
-  } */
+
 
   useEffect(() => { }, [dispatch, currentUser])
 

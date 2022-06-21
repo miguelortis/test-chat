@@ -8,13 +8,15 @@ import {
   Slider,
   Typography,
 } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { Context } from '../contexts/Context';
 import Cropper from 'react-easy-crop';
-import { useAuth } from '../../context/AuthContext';
 import getCroppedImg from './utils/cropImage';
 
 const CropEasy = ({ photoURL, setOpenCrop, setPhotoURL, setFile }) => {
-  const { setAlert, setLoading } = useAuth();
+  const {
+    dispatch,
+  } = useContext(Context)
   const [crop, setCrop] = useState({ x: 10, y: 100 });
   const [zoom, setZoom] = useState(1);
   const [rotation, setRotation] = useState(0);
@@ -25,7 +27,7 @@ const CropEasy = ({ photoURL, setOpenCrop, setPhotoURL, setFile }) => {
   };
 
   const cropImage = async () => {
-    setLoading(true);
+    dispatch({ type: 'SET_LOADING', payload: true });
     try {
       const { file, url } = await getCroppedImg(
         photoURL,
@@ -36,17 +38,11 @@ const CropEasy = ({ photoURL, setOpenCrop, setPhotoURL, setFile }) => {
       setFile(file);
       setOpenCrop(false);
     } catch (error) {
-      setAlert({
-        isAlert: true,
-        severity: 'error',
-        message: error.message,
-        timeout: 5000,
-        location: 'modal',
-      });
+      dispatch({ type: 'SET_ALERT', payload: { isAlert: true, severity: 'error', message: error.message, timeout: 5000, location: 'modal' } });
+
       console.log(error);
     }
-
-    setLoading(false);
+    dispatch({ type: 'SET_LOADING', payload: false });
   };
   return (
     <>

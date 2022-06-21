@@ -44,7 +44,6 @@ export function GetUsers() {
 		dispatch,
 	} = useContext(Context)
 	const [users, setUsers] = useState([]);
-
 	useEffect(() => {
 		socket.on("getUsers", (users) => {
 			setUsers(users);

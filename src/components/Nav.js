@@ -1,23 +1,17 @@
 import React, { useContext } from "react";
+import { Context } from '../components/contexts/Context'
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import { useAuth } from '../context/AuthContext';
 import Profile from './user/Profile';
-import { Context } from '../components/contexts/Context'
 
 export default function Nav() {
   const {
     state: { photoURL },
+    dispatch,
   } = useContext(Context)
 
-
-
-  const { setModal } = useAuth();
 
   return (
     <React.Fragment>
@@ -25,15 +19,10 @@ export default function Nav() {
 
         <Tooltip title="Foto perfil">
           <IconButton onClick={() =>
-            setModal({
-              isOpen: true,
-              title: 'Update Profile',
-              content: <Profile />,
-            })
-          } size="small" sx={{ ml: 2 }} >
+            dispatch({ type: "SET_MODAL", payload: { isOpen: true, title: "Foto de Perfil", content: <Profile /> } })}>
             <Avatar
               src={`data:image/png;base64,${photoURL}`}
-              sx={{ width: 32, height: 32 }}
+              sx={{ width: 70, height: 70 }}
             >
 
             </Avatar>

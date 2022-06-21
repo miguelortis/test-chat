@@ -12,8 +12,7 @@ import Divider from '@mui/material/Divider';
 import Menu from '@mui/material/Menu';
 import { useNavigate } from 'react-router-dom'
 import socket from "../../components/socket/Socket";
-import { Avatar, ListItemAvatar } from '@mui/material';
-import { useAuth } from '../../context/AuthContext';
+import { Avatar } from '@mui/material';
 import Profile from '../user/Profile';
 import Modal from '../Modal';
 export default function Header() {
@@ -32,7 +31,6 @@ export default function Header() {
 	}
 		, [userData]);
 
-	const { setModal } = useAuth();
 	const handleClose = () => {
 		setAnchorEl(null);
 	};
@@ -99,10 +97,12 @@ export default function Header() {
 							>
 								<MenuItem
 									onClick={() =>
-										setModal({
-											isOpen: true,
-											title: 'Actualizar Perfil',
-											content: <Profile />,
+										dispatch({
+											type: "SET_MODAL", payload: {
+												isOpen: true,
+												title: 'Actualizar Perfil',
+												content: <Profile />,
+											}
 										})
 									}
 								>

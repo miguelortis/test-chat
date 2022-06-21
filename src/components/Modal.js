@@ -1,31 +1,29 @@
+import React, { useEffect, useContext } from 'react';
+import { Context } from './contexts/Context'
 import { Close } from '@mui/icons-material';
 import { Dialog, DialogTitle, IconButton } from '@mui/material';
-import { useEffect } from 'react';
-import { useAuth } from '../context/AuthContext';
 
 const Modal = () => {
   const {
-    modal,
-    setModal,
-    alert: { location, isAlert },
-    setAlert,
-  } = useAuth();
+    state: { showModal, alert: { location, isAlert } },
+    dispatch,
+  } = useContext(Context)
 
   const handleClose = () => {
-    setModal({ ...modal, isOpen: false });
+    dispatch({ type: 'SET_MODAL', payload: { isOpen: false, title: '', content: '' } })
   };
 
   useEffect(() => {
-    if (modal.isOpen === false) {
+    if (showModal.isOpen === false) {
       if (isAlert && location === 'modal') {
-        setAlert({ ...alert, isAlert: false });
+        dispatch({ type: 'ALERT', payload: { isAlert: false, severity: 'info', message: '', timeout: null, location: '' } })
       }
     }
-  }, [modal?.isOpen]);
+  }, [showModal?.isOpen]);
   return (
-    <Dialog open={modal.isOpen} onClose={handleClose}>
+    <Dialog open={showModal.isOpen} onClose={handleClose}>
       <DialogTitle>
-        {modal.title}
+        {showModal.title}
         <IconButton
           aria-label="Close"
           onClick={handleClose}
@@ -39,7 +37,7 @@ const Modal = () => {
           <Close />
         </IconButton>
       </DialogTitle>
-      {modal.content}
+      {showModal.content}
     </Dialog>
   );
 };
