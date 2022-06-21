@@ -28,7 +28,6 @@ export default function BottomAppBar() {
     });
 
     const submit = () => {
-        console.log(messages);
         socket.emit("message", name, message);
         setMessage("");
         input.current.focus();
