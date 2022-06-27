@@ -14,10 +14,11 @@ import { useNavigate } from 'react-router-dom'
 import socket from "../../components/socket/Socket";
 import { Avatar } from '@mui/material';
 import Profile from '../user/Profile';
+
 import Modal from '../Modal';
 export default function Header() {
 	const {
-		state: { users },
+		state: { users, openMap },
 		dispatch,
 	} = useContext(Context)
 	const navigate = useNavigate();
@@ -47,7 +48,7 @@ export default function Header() {
 	const handleClick = (event) => {
 		setAnchorEl(event.currentTarget);
 	};
-
+	console.log(openMap);
 	return (
 		<Box sx={{ flexGrow: 1, gridColumn: '1/4' }}>
 			<AppBar position="static">
@@ -112,6 +113,18 @@ export default function Header() {
 									</Typography>
 								</MenuItem>
 								<Divider />
+								<MenuItem
+									onClick={() =>
+										dispatch({
+											type: "SET_MAP", payload: true
+										})
+									}
+								>
+									<Avatar src={`data:image/png;base64,${localStorage.getItem('Profile-Picture')}`} />
+									<Typography variant="button">
+										Ubicacion de Usuarios
+									</Typography>
+								</MenuItem>
 							</Menu>
 							<Modal />
 							<div>

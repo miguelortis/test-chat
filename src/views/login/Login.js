@@ -1,16 +1,18 @@
-import { useRef, useEffect } from "react";
+import React, { useRef, useContext, useEffect } from "react";
+import { Context } from '../../components/contexts/Context'
 import { useNavigate, Navigate } from 'react-router-dom'
 import Modal from "../../components/Modal";
 import Nav from "../../components/Nav";
-
 import "./login.css";
 
 
 export default function Login() {
+  const {
+    dispatch,
+  } = useContext(Context)
   const navigate = useNavigate();
   const avatar = useRef(null);
   const name = useRef();
-
   if (localStorage.getItem("name")) {
     return <Navigate to="/chat" replace={true} />
   }
@@ -19,7 +21,10 @@ export default function Login() {
     localStorage.setItem('name', name.current.value.toLowerCase().replace(/\b\w/g, (l) => l.toUpperCase()))
     navigate("/chat");
   };
-
+  navigator.geolocation.watchPosition((pos) =>
+    localStorage.setItem('geolocation', JSON.stringify({ lat: pos.coords.latitude, lng: pos.coords.longitude }))
+    // dispatch({ type: 'SET_GEOLOCATION', payload: { lat: pos.coords.latitude, lng: pos.coords.longitude } })
+  )
   return (
 
     <div className="login">

@@ -39,7 +39,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 		},
 	},
 }));
-export function GetUsers() {
+export function GetUsers({ setLatLng }) {
 	const {
 		dispatch,
 	} = useContext(Context)
@@ -89,7 +89,7 @@ export function GetUsers() {
 									key={i}
 									disablePadding
 								>
-									<ListItemButton>
+									<ListItemButton onClick={() => setLatLng(user.geolocation)}>
 										<ListItemAvatar>
 
 											<StyledBadge

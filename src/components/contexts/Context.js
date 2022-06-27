@@ -15,6 +15,8 @@ const initialState = {
     location: '',
   },
   loading: false,
+  openMap: false,
+  geolocation: {},
 }
 
 const reducer = (state, action) => {
@@ -31,6 +33,10 @@ const reducer = (state, action) => {
       return { ...state, alert: action.payload }
     case 'SET_LOADING':
       return { ...state, loading: action.payload }
+    case 'SET_MAP':
+      return { ...state, openMap: action.payload }
+    case 'SET_GEOLOCATION':
+      return { ...state, geolocation: action.payload }
     case 'RESET':
       return { ...state, users: [], buttonInfo: false, photoURL: '' }
     default:
