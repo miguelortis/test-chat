@@ -21,10 +21,19 @@ export default function Login() {
     localStorage.setItem('name', name.current.value.toLowerCase().replace(/\b\w/g, (l) => l.toUpperCase()))
     navigate("/chat");
   };
-  navigator.geolocation.watchPosition((pos) =>
-    localStorage.setItem('geolocation', JSON.stringify({ lat: pos.coords.latitude, lng: pos.coords.longitude }))
-    // dispatch({ type: 'SET_GEOLOCATION', payload: { lat: pos.coords.latitude, lng: pos.coords.longitude } })
-  )
+  window.addEventListener('load', mapInitialize);
+
+  function mapInitialize() {
+    if (navigator.geolocation) {
+      navigator.geolocation.watchPosition((pos) =>
+        localStorage.setItem('geolocation', JSON.stringify({ lat: pos.coords.latitude, lng: pos.coords.longitude }))
+
+      )
+      // navigator.geolocation.getCurrentPosition(set_position_in_google_map);
+    } else {
+      alert("Tu navegador no soporta el API de geolocalización. Actualiza a un navegador más moderno.");
+    }
+  }
   return (
 
     <div className="login">
